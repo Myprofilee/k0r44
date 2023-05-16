@@ -56,13 +56,15 @@ $(window).on("scroll", (function() {
 }));
 
 
-/* Error 
+
 window.addEventListener("error", function(event) {
     // Periksa apakah error terjadi pada halaman yang diinginkan
-    var targetUrl = "index.html";
+    var targetUrl = "/";
+    /* Error 
     var targetUrl = "/p/category/source-code/";
+    / Error */
     if (window.location.href.includes(targetUrl)) {
-       window.location.href = "error.html";
+       window.location.href = "/Coming Soon";
     }
 });
 
