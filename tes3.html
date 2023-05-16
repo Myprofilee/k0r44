@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Halaman Utama</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Total Jumlah Data Firestore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <nav id="navbar">
-    <ul>
-      <li><a href="index.html">Beranda</a></li>
-      <li><a href="about.html">Tentang</a></li>
-      <li><a href="services.html">Layanan</a></li>
-      <li><a href="contact.html">Kontak</a></li>
-    </ul>
-  </nav>
+  <div class="container">
+    <h1>Total Jumlah Data Firestore</h1>
+    <div class="result">Total: <span id="total"></span></div>
+  </div>
 
-  <h1>Halaman Utama</h1>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script>
+    // Inisialisasi konfigurasi Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyAHzdQBuayNNvj6Z0cqDIflj4rpiKAnIxI",
+    authDomain: "koraid.firebaseapp.com",
+    projectId: "koraid",
+    storageBucket: "koraid.appspot.com",
+    messagingSenderId: "297060588990",
+    appId: "1:297060588990:web:16fe8352c9af96d4b9adef",
+    measurementId: "G-4FCRJVSQRQ"
+    };
 
-  <script src="sc.js"></script>
+    // Inisialisasi aplikasi Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Inisialisasi Firestore
+    var db = firebase.firestore();
+
+    // Mengambil total jumlah data dari Firestore
+    db.collection("/kora/product/ui design/").get().then(function(querySnapshot) {
+      var total = querySnapshot.size;
+      document.getElementById("total").textContent = total;
+    });
+
+
+    
+  </script>
 </body>
 </html>

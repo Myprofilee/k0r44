@@ -1,15 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tentang</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Total Jumlah Data Pengguna yang Telah Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <nav id="navbar">
+  <div class="container">
+    <h1>Total Jumlah Data Pengguna yang Telah Login</h1>
+    <div class="result">Total: <span id="total"></span></div>
+  </div>
 
-      </nav>
-  <h1>Tentang</h1>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
 
-  <script src="sc.js"></script>
+  <script>
+    // Inisialisasi konfigurasi Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyAHzdQBuayNNvj6Z0cqDIflj4rpiKAnIxI",
+    authDomain: "koraid.firebaseapp.com",
+    projectId: "koraid",
+    storageBucket: "koraid.appspot.com",
+    messagingSenderId: "297060588990",
+    appId: "1:297060588990:web:16fe8352c9af96d4b9adef",
+    measurementId: "G-4FCRJVSQRQ"
+    };
+
+    // Inisialisasi aplikasi Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Inisialisasi Firebase Authentication
+    var auth = firebase.auth();
+
+    // Inisialisasi Cloud Firestore
+    var firestore = firebase.firestore();
+
+    // Mengambil total jumlah data pengguna yang telah login
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // Menambahkan data pengguna yang telah login ke Firestore
+        firestore.collection('users').doc(user.uid).set({
+          uid: user.uid,
+          email: user.email
+        });
+      }
+
+      // Mengambil snapshot dari Firestore
+      firestore.collection('users').get().then(function(querySnapshot) {
+        var total = querySnapshot.size;
+        document.getElementById("total").textContent = total;
+      });
+    });
+  </script>
 </body>
 </html>
