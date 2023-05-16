@@ -224,32 +224,7 @@
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/main.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-  // Create a new <nav> element
-  var navbar = document.createElement('nav');
-  navbar.setAttribute('id', 'navbar');
-
-  // Copy the inner HTML of the navbar from the index.html file
-  var indexNavbar = document.getElementById('navbar');
-  navbar.innerHTML = indexNavbar.innerHTML;
-
-  // Find the <body> element
-  var body = document.getElementsByTagName('body')[0];
-
-  // Insert the new navbar at the beginning of the <body>
-  body.insertBefore(navbar, body.firstChild);
-
-  // Find the current page link and add the 'active' class
-  var currentPage = window.location.pathname.split('/').pop();
-  var currentLink = navbar.querySelector('a[href="' + currentPage + '"]');
-  if (currentLink) {
-    currentLink.classList.add('active');
-  }
-});
-
-
-    </script>
+    <script src="/assets/data/kora.min.js"></script>
 </body>
 
 </html>
