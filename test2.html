@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload File</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <input type="file" id="fileInput">
+  <button onclick="uploadFile()">Upload</button>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+  <script>
+    // Konfigurasi Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAHzdQBuayNNvj6Z0cqDIflj4rpiKAnIxI",
+    authDomain: "koraid.firebaseapp.com",
+    projectId: "koraid",
+    storageBucket: "koraid.appspot.com",
+    messagingSenderId: "297060588990",
+    appId: "1:297060588990:web:16fe8352c9af96d4b9adef",
+    measurementId: "G-4FCRJVSQRQ"
+};
+
+// Inisialisasi Firebase
+firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
+const db = firebase.firestore();
+
+// Mendapatkan referensi koleksi pada Firestore
+const collectionRef = db.collection('uploads');
+
+function uploadFile() {
+  const fileInput = document.getElementById('fileInput');
+  const file = fileInput.files[0];
+
+  // Generate nama file unik
+  const fileName = generateUniqueFileName(file.name);
+
+  // Menyimpan file ke storage
+  const storageRef = storage.ref(fileName);
+  const uploadTask = storageRef.put(file);
+
+  // Mengirim data ke Firestore
+  uploadTask.on(
+    'state_changed',
+    (snapshot) => {
+      // Menampilkan progres upload (opsional)
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload progress: ' + progress + '%');
+    },
+    (error) => {
+      console.log('Upload error:', error);
+    },
+    () => {
+      // Mendapatkan URL file yang diunggah
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        // Menyimpan data ke Firestore
+        const uploadData = {
+          name: file.name,
+          url: downloadURL,
+          uploadTime: new Date().getTime(),
+        };
+
+        collectionRef
+          .add(uploadData)
+          .then(() => {
+            console.log('Data uploaded successfully');
+          })
+          .catch((error) => {
+            console.log('Firestore error:', error);
+          });
+      });
+    }
+  );
+}
+
+// Fungsi untuk menghapus data yang lebih dari 24 jam
+function deleteExpiredData() {
+  const currentTime = new Date().getTime();
+  const expirationTime = 24 * 60 * 60 * 1000; // 24 jam dalam milidetik
+
+  collectionRef
+    .where('uploadTime', '<=', currentTime - expirationTime)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // Menghapus data dari Firestore
+        doc.ref.delete().then(() => {
+          console.log('Data deleted successfully');
+        });
+      });
+    })
+    .catch((error) => {
+      console.log('Firestore error:', error);
+    });
+}
+
+// Memanggil fungsi deleteExpiredData setiap 24 jam
+setInterval(deleteExpiredData, 24 * 60 * 60 * 1000);
+
+// Fungsi untuk menghasilkan nama file unik
+function generateUniqueFileName(originalName) {
+  const timestamp = new Date().getTime();
+  const randomString = Math.random().toString(36).substring(2, 8);
+  const extension = originalName.split('.').pop();
+  return `${timestamp}-${randomString}.${extension}`;
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contoh Login Firebase</title>
+  <style>
+    #login-container {
+  text-align: center;
+  padding: 20px;
+}
+
+#user-display {
+  margin-top: 20px;
+}
+
+#login-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+  </style>
+</head>
+<body>
+  <div id="login-container">
+    <h1>Selamat Datang!</h1>
+    <div id="user-display" style="display: none;">
+      <img src="" id="user-img">
+      <p id="user-info"></p>
+    </div>
+    <button id="login-button">Login</button>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+  <script>
+    // Inisialisasi Firebase
+var firebaseConfig = {
+  apiKey: "AIzaSyAHzdQBuayNNvj6Z0cqDIflj4rpiKAnIxI",
+    authDomain: "koraid.firebaseapp.com",
+    projectId: "koraid",
+    storageBucket: "koraid.appspot.com",
+    messagingSenderId: "297060588990",
+    appId: "1:297060588990:web:16fe8352c9af96d4b9adef",
+    measurementId: "G-4FCRJVSQRQ"
+};
+
+firebase.initializeApp(firebaseConfig);
+// Menginisialisasi objek Firebase Auth
+var auth = firebase.auth();
+
+// Mendaftarkan listener untuk mengidentifikasi perubahan status login
+auth.onAuthStateChanged(function(user) {
+  var loginButton = document.getElementById('login-button');
+  var userDisplay = document.getElementById('user-display');
+  var userInfo = document.getElementById('user-info');
+  var userImg = document.getElementById('user-img');
+
+  if (user) {
+    // Pengguna sudah login
+    loginButton.style.display = 'none';
+    userDisplay.style.display = 'block';
+    userInfo.textContent = 'Halo, ' + user.displayEmail;
+    userImg.textContent = 'Halo, ' + user.displayName;
+  } else {
+    // Pengguna belum login
+    loginButton.style.display = 'block';
+    userDisplay.style.display = 'none';
+  }
+});
+
+// Menambahkan event listener pada tombol login
+document.getElementById('login-button').addEventListener('click', function() {
+  // Membuat instance provider untuk autentikasi menggunakan akun Google
+  var provider = new firebase.auth.GoogleAuthProvider();
+
+  // Membuka dialog login menggunakan akun Google
+  auth.signInWithPopup(provider)
+    .then(function(result) {
+      // Login berhasil
+      var user = result.user;
+      console.log(user);
+    })
+    .catch(function(error) {
+      // Error saat login
+      console.log(error);
+    });
+});
+
+  </script>
+</body>
+</html>
