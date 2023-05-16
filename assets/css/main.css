@@ -455,7 +455,7 @@ button:focus {
     font-size: 15px;
     line-height: 15px;
     color: var(--text);
-    font-family: "Remixicon";
+    font-family: IcoFont;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     transition: all linear .3s;
@@ -1049,7 +1049,7 @@ button:focus {
 
 .star-rating label::before {
     content: "\ec7c";
-    font-family: 'Remixicon';
+    font-family: 'Icofont';
     font-weight: 900;
     font-size: 35px;
     display: block;
@@ -1058,7 +1058,7 @@ button:focus {
 
 .star-rating label::after {
     content: "\ec7c";
-    font-family: 'Remixicon';
+    font-family: 'Icofont';
     font-weight: 900;
     font-size: 35px;
     position: absolute;

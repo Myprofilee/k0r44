@@ -54,3 +54,16 @@ $(window).on("scroll", (function() {
 })), $(".payment-card.payment").on("click", (function() {
     $(".payment-card.payment").removeClass("active"), $(this).addClass("active")
 }));
+
+
+/* Error 
+window.addEventListener("error", function(event) {
+    // Periksa apakah error terjadi pada halaman yang diinginkan
+    var targetUrl = "index.html";
+    var targetUrl = "/p/category/source-code/";
+    if (window.location.href.includes(targetUrl)) {
+       window.location.href = "error.html";
+    }
+});
+
+/ Error */
