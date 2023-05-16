@@ -56,13 +56,11 @@ $(window).on("scroll", (function() {
 }));
 
 
-
+/* Error 
 window.addEventListener("error", function(event) {
     // Periksa apakah error terjadi pada halaman yang diinginkan
-    var targetUrl = "/";
-    /* Error 
+    var targetUrl = "kora ecommerce/index.html";
     var targetUrl = "/p/category/source-code/";
-    / Error */
     if (window.location.href.includes(targetUrl)) {
        window.location.href = "/Coming Soon";
     }
