@@ -78,12 +78,10 @@ window.addEventListener("error", function(event) {
 
 
 window.onload = function() {
-    var currentFile = window.location.pathname.split('/').pop(); // Mendapatkan nama file saat ini
-  
-    // Periksa apakah file saat ini adalah index.html
-    if (currentFile === 'index.html') {
-      // Arahkan ke halaman error
-      window.location.href = 'halaman_error.html';
+    var currentURL = window.location.href;
+    var restrictedURLs = ["index.html", "https://contoh.com/page2.html"];
+
+    if (restrictedURLs.includes(currentURL)) {
+      window.location.href = "/404";
     }
   };
-  
