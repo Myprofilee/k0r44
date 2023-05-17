@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-5">
                 <div class="header-top-welcome">
-                    <p>Welcome to Ecomart in Your Dream Online Store!</p>
+                    <p>Welcome to koraa!</p>
                 </div>
             </div>
             <div class="col-md-5 col-lg-3">
@@ -13,9 +13,8 @@
             </div>
             <div class="col-md-7 col-lg-4">
                 <ul class="header-top-list">
-                    <li><a href="offer.html">offers</a></li>
-                    <li><a href="faq.html">need help</a></li>
-                    <li><a href="contact.html">contact us</a></li>
+                    <li><a href="/p/bantuan/">need help</a></li>
+                    <li><a href="/p/contact/">contact us</a></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +31,7 @@
                 <a href="index.html">
                     <img src="/assets/img/logo/kora.png" alt="logo">
                 </a>
-                <button class="header-src cart-btn">
+                <button class="cart-btn">
                     <i class="ri-notification-2-fill icon"></i>
                 </button>
             </div>
@@ -45,10 +44,14 @@
                 <span>join</span>
             </a>
 
-            <form class="header-form">
+            <div class="header-form none"></div>
+            <!-- Erorr --
+            <form class="header-form none">
                 <input type="text" id="searchInput" placeholder="Search anything...">
                 <button><i class="ri-search-2-line"></i></button>
             </form>
+            <!-- Erorr -->
+
             <div class="header-widget-group">
                 <!-- Erorr --
                 <a href="" class="header-widget" title="Wishlist">
@@ -75,10 +78,7 @@
                             <a class="navbar-link" href="/">home</a>
                         </li>
 
-                        <li class="navbar-item dropdown-megamenu">
-                            <a class="navbar-link" href="/p/category/source-code/">shop</a>
-                        </li>
-
+                        <!-- Error --
                         <li class="navbar-item dropdown-megamenu"><a class="navbar-link dropdown-arrow"
                                 href="#">category</a>
                             <div class="megamenu">
@@ -107,16 +107,27 @@
                                 </div>
                             </div>
                         </li>
+                        <!-- Error -->
 
-                        <li class="navbar-item dropdown-megamenu">
-                            <a class="navbar-link" href="#">Design</a>
+                        <li class="navbar-item dropdown">
+                            <a class="navbar-link dropdown-arrow">Source Code</a>
+                            <ul class="dropdown-position-list">
+                                <li><a href="/404">Admin Dashboard</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="navbar-item dropdown">
+                            <a class="navbar-link dropdown-arrow">UX Design</a>
+                            <ul class="dropdown-position-list">
+                                <li><a href="/items/category/ux-design/application/">Application</a></li>
+                            </ul>
                         </li>
 
                         <!-- Error --
                         <li class="navbar-item dropdown">
-                            <a class="navbar-link dropdown-arrow" href="#">pages</a>
+                            <a class="navbar-link dropdown-arrow">UX Design</a>
                             <ul class="dropdown-position-list">
-                                <li><a href="">faqs</a></li>
+                                <li><a href="/items/category/ux-design/application/">Application</a></li>
                             </ul>
                         </li>
                         <!-- Error -->

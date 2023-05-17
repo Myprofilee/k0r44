@@ -117,7 +117,12 @@
 }
 
 img {
-    vertical-align: middle
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
 }
 
 a {
@@ -1199,7 +1204,7 @@ button:focus {
     border-radius: 30px;
     cursor: pointer;
     display: inline-block;
-    background: var(--primary);
+    background: var(--white);
     -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
     transition: all linear .3s;
@@ -1215,7 +1220,7 @@ button:focus {
 
 .slider-dots ul li.slick-active {
     width: 25px;
-    background: var(--primary);
+    background: var(--white);
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;
@@ -4294,6 +4299,10 @@ tbody tr td:last-child {
     -o-transition: all linear .3s
 }
 
+.none {
+    border: none;
+}
+
 .header-form:focus-within {
     background: var(--white);
     border-color: var(--primary)
@@ -4342,14 +4351,16 @@ tbody tr td:last-child {
 }
 
 .header-user img,
-.header-src img {
+.header-src img,
+.cart-btn img {
     width: 40px;
     height: 40px;
     border-radius: 50%
 }
 
 .header-user i,
-.header-src i {
+.header-src i,
+.cart-btn i {
     width: 40px;
     height: 40px;
     font-size: 15px;
@@ -4367,7 +4378,8 @@ tbody tr td:last-child {
 }
 
 .header-user i:hover,
-.header-src i:hover {
+.header-src i:hover,
+.cart-btn i:hover {
     color: var(--white);
     background: var(--primary)
 }
