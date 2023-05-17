@@ -452,7 +452,7 @@ button:focus {
 
 @media (max-width: 991px) {
     .backtop {
-        bottom: 55px
+        bottom: 80px;
     }
 }
 

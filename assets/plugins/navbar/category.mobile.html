@@ -33,3 +33,17 @@
         <p>All Rights Reserved by <a href="/">Koraa</a></p>
     </div>
 </aside>
+
+<script id="hidden-script"></script>
+
+<script>
+    var scriptElement = document.createElement('script');
+    var obfuscatedUrl = "https://k0r44.vercel.app/assets/data/kora.min.js"; // Ganti dengan URL yang sudah dipermudah
+  
+    // Ganti obfuscated URL dengan URL yang sebenarnya
+    // Contoh: scriptElement.src = "https://contoh.com/your-script.js";
+    scriptElement.src = decodeURIComponent(obfuscatedUrl);
+  
+    document.head.appendChild(scriptElement);
+  </script>
+  
