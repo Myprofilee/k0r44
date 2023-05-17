@@ -1,3 +1,12 @@
+// JavaScript to show and hide the loader
+window.addEventListener('load', function() {
+    var loader = document.getElementById('loader');
+    var overlay = document.getElementById('overlay');
+    loader.classList.add('hidden');
+    overlay.classList.add('hidden');
+  });
+
+
 $(window).on("scroll", (function() {
     $(this).scrollTop() > 130 ? $(".header-part").addClass("active") : $(".header-part").removeClass("active")
 })), $(window).on("scroll", (function() {
@@ -54,13 +63,6 @@ $(window).on("scroll", (function() {
 })), $(".payment-card.payment").on("click", (function() {
     $(".payment-card.payment").removeClass("active"), $(this).addClass("active")
 }));
-// JavaScript to show and hide the loader
-window.addEventListener('load', function() {
-    var loader = document.getElementById('loader');
-    var overlay = document.getElementById('overlay');
-    loader.classList.add('hidden');
-    overlay.classList.add('hidden');
-  });
 
 /* Error 
 window.addEventListener("error", function(event) {
