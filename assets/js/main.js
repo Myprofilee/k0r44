@@ -54,7 +54,13 @@ $(window).on("scroll", (function() {
 })), $(".payment-card.payment").on("click", (function() {
     $(".payment-card.payment").removeClass("active"), $(this).addClass("active")
 }));
-
+// JavaScript to show and hide the loader
+window.addEventListener('load', function() {
+    var loader = document.getElementById('loader');
+    var overlay = document.getElementById('overlay');
+    loader.classList.add('hidden');
+    overlay.classList.add('hidden');
+  });
 
 /* Error 
 window.addEventListener("error", function(event) {
