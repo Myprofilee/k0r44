@@ -25,6 +25,7 @@
   <div class="container">
     <h1>Total Jumlah Data Firestore</h1>
     <div class="result">Total: <span id="total"></span></div>
+    <div class="result">Total: <span id="total2"></span></div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
@@ -32,13 +33,13 @@
   <script>
     // Inisialisasi konfigurasi Firebase
     var firebaseConfig = {
-      apiKey: "AIzaSyAHzdQBuayNNvj6Z0cqDIflj4rpiKAnIxI",
-    authDomain: "koraid.firebaseapp.com",
-    projectId: "koraid",
-    storageBucket: "koraid.appspot.com",
-    messagingSenderId: "297060588990",
-    appId: "1:297060588990:web:16fe8352c9af96d4b9adef",
-    measurementId: "G-4FCRJVSQRQ"
+      apiKey: "AIzaSyA_2_DrjTzs1cIOY9_5mloWYcdLxpsFq5c",
+authDomain: "koraa-id.firebaseapp.com",
+projectId: "koraa-id",
+storageBucket: "koraa-id.appspot.com",
+messagingSenderId: "360256061577",
+appId: "1:360256061577:web:5d9dbb92ff3313c7b48658",
+measurementId: "G-VJT00SD3NT"
     };
 
     // Inisialisasi aplikasi Firebase
@@ -48,12 +49,15 @@
     var db = firebase.firestore();
 
     // Mengambil total jumlah data dari Firestore
-    db.collection("/kora/product/ui design/").get().then(function(querySnapshot) {
+    db.collection("/koraa/").get().then(function(querySnapshot) {
       var total = querySnapshot.size;
       document.getElementById("total").textContent = total;
     });
 
-
+    db.collection("/koraa/items/category/ux design/application").get().then(function(querySnapshot) {
+      var total = querySnapshot.size;
+      document.getElementById("total2").textContent = total;
+    });
     
   </script>
 </body>

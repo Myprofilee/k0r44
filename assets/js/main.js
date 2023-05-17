@@ -75,3 +75,17 @@ window.addEventListener("error", function(event) {
 });
 
 / Error */
+
+
+window.onload = function() {
+    // Daftar file yang ingin diarahkan ke halaman error
+    var filesToRedirect = ['index.html', '/items/category/ux-design/application/'];
+  
+    var currentFile = window.location.pathname.split('/').pop(); // Mendapatkan nama file saat ini
+  
+    // Periksa apakah file saat ini perlu diarahkan
+    if (filesToRedirect.includes(currentFile)) {
+      // Arahkan ke halaman error
+      window.location.href = '?404';
+    }
+  };

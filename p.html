@@ -1,71 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Data in Firestore</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Total Jumlah Data Firestore</title>
+  <style>
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Edit Data in Firestore</h1>
-
-    <form id="editForm">
-        <label for="productID">Product ID:</label>
-        <input type="text" id="productID" placeholder="Enter product ID">
-
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" placeholder="Enter product name">
-
-        <input type="submit" value="Update">
-    </form>
-
-    <script>
-        // Initialize Firebase
-var firebaseConfig = {
-    apiKey: "AIzaSyAHzdQBuayNNvj6Z0cqDIflj4rpiKAnIxI",
-    authDomain: "koraid.firebaseapp.com",
-    projectId: "koraid",
-    storageBucket: "koraid.appspot.com",
-    messagingSenderId: "297060588990",
-    appId: "1:297060588990:web:16fe8352c9af96d4b9adef",
-    measurementId: "G-4FCRJVSQRQ"
+    <div class="container">
+        <h1>Total Jumlah Data Firestore</h1>
+        <h2 id="total-data">Loading...</h2>
+      </div>
+    
+      <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore.js"></script>
+  <script>
+    // Inisialisasi Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyA_2_DrjTzs1cIOY9_5mloWYcdLxpsFq5c",
+  authDomain: "koraa-id.firebaseapp.com",
+  projectId: "koraa-id",
+  storageBucket: "koraa-id.appspot.com",
+  messagingSenderId: "360256061577",
+  appId: "1:360256061577:web:5d9dbb92ff3313c7b48658",
+  measurementId: "G-VJT00SD3NT"
 };
 
 firebase.initializeApp(firebaseConfig);
 
-// Get a reference to the Firestore database
+// Mengambil referensi Firestore
+const db = firebase.firestore();
 
-db.collection("/kora/product/ui design/").onSnapshot((snapshot) => {
-    fetchTrending(snapshot.docs);
+// Menghitung total jumlah dokumen dalam seluruh database Firestore
+let totalData = 0;
+
+db.listCollections().then((collections) => {
+  collections.forEach((collection) => {
+    collection.get().then((querySnapshot) => {
+      totalData += querySnapshot.size;
+
+      const totalDataElement = document.getElementById("total-data");
+      totalDataElement.textContent = `Total Data: ${totalData}`;
+    });
+  });
+}).catch((error) => {
+  console.log("Error getting collections:", error);
 });
-// Function to update product data
-function updateProduct(event) {
-    event.preventDefault(); // Prevent form submission
-
-    var productID = document.getElementById('productID').value;
-    var productName = document.getElementById('productName').value;
-    var productPrice = document.getElementById('productPrice').value;
-
-    // Update the product data in Firestore
-    db.collection('products')
-        .doc(productID)
-        .update({
-            name: productName,
-            price: productPrice
-        })
-        .then(function () {
-            console.log('Document successfully updated!');
-            alert('Product data updated successfully!');
-            document.getElementById('editForm').reset();
-        })
-        .catch(function (error) {
-            console.error('Error updating document: ', error);
-            alert('An error occurred while updating the product data.');
-        });
-}
-
-// Add event listener to the form
-var editForm = document.getElementById('editForm');
-editForm.addEventListener('submit', updateProduct);
-
-    </script>
+  </script>
 </body>
 </html>

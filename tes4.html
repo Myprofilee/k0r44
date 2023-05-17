@@ -25,6 +25,7 @@
   <div class="container">
     <h1>Total Jumlah Data Pengguna yang Telah Login</h1>
     <div class="result">Total: <span id="total"></span></div>
+    <div class="result">Total: <span id="total2"></span></div>
   </div>
 
   <!-- Firebase SDK -->
@@ -68,6 +69,16 @@
         var total = querySnapshot.size;
         document.getElementById("total").textContent = total;
       });
+    });
+
+
+    // Inisialisasi Firestore
+    var db = firebase.firestore();
+
+    // Mengambil total jumlah data dari Firestore
+    db.collection("/koraa/").get().then(function(querySnapshot) {
+      var total = querySnapshot.size;
+      document.getElementById("total2").textContent = total;
     });
   </script>
 </body>
