@@ -79,7 +79,10 @@ window.addEventListener("error", function(event) {
 
 window.onload = function() {
     var currentURL = window.location.href;
-    var restrictedURLs = ["index.html", "https://contoh.com/page2.html"];
+    var restrictedURLs = [
+        "https://k0r44.vercel.app/", 
+        "https://contoh.com/page2.html"
+    ];
 
     if (restrictedURLs.includes(currentURL)) {
       window.location.href = "/404";
