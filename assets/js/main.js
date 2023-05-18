@@ -1,3 +1,25 @@
+// Fungsi untuk menampilkan atau menyembunyikan tombol "Back to Top" berdasarkan posisi scroll
+function handleScroll() {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (window.pageYOffset > 100) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  }
+  
+  // Fungsi untuk scroll ke bagian atas halaman
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+  
+  // Event listener saat melakukan scroll
+  window.addEventListener('scroll', handleScroll);
+  
+
 // JavaScript to show and hide the loader
 window.addEventListener('load', function() {
     var loader = document.getElementById('loader');

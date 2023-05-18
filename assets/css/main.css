@@ -1975,7 +1975,7 @@ tbody tr td:last-child {
     border-top: 1px solid var(--border)
 }
 
-.product-rating {
+.items-author {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1984,18 +1984,18 @@ tbody tr td:last-child {
     align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: left;
     margin-bottom: 3px
 }
 
-.product-rating i,
-.product-rating a {
+.items-author i,
+.items-author a {
     font-size: 14px;
     margin: 0px 2px;
     color: var(--gray)
 }
 
-.product-rating a {
+.items-author a {
     white-space: nowrap;
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
@@ -2004,12 +2004,12 @@ tbody tr td:last-child {
     -o-transition: all linear .3s
 }
 
-.product-rating a:hover {
+.items-author a:hover {
     color: var(--primary);
     text-decoration: underline
 }
 
-.product-rating .active {
+.items-author .active {
     color: var(--yellow)
 }
 
